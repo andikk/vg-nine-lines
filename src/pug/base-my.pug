@@ -1,0 +1,117 @@
+include mixins
+
+block vars
+	-
+		var baseDir = './'
+	-
+		var title = typeof title !== 'undefined' ? title : null
+		var description = typeof description !== 'undefined' ? description : null
+		var image = typeof image !== 'undefined' ? image : null
+	-
+		var html = {
+			attrs: {
+				lang: 'ru'
+			},
+			classList: []
+		}
+	-
+		var body = {
+			attrs: {},
+			classList: []
+		}
+	-
+		const videosAsuVuz = [
+			{
+				url: "https://www.youtube.com/embed/rz54F6w1OnY",
+				name: "Контингент"
+			},
+			{
+				url: "https://www.youtube.com/embed/8ZP4OMUrqDo",
+				name: "Учебная нагрузка"
+			},
+			{
+				url: "https://www.youtube.com/embed/GrLX9hMUwiQ",
+				name: "Рабочие учебные планы"
+			},
+			{
+				url: "https://www.youtube.com/embed/vnw1jLxUX-c",
+				name: "Абитуриент"
+			},
+			{
+				url: "https://www.youtube.com/embed/MUReUXaOtSU",
+				name: "Расписание"
+			}
+		]
+	-
+		const videosEcampus = [
+			{
+				url: "https://www.youtube.com/embed/GKMUdJYnmM4",
+				name: "Программы дисциплин"
+			},
+			{
+				url: "https://www.youtube.com/embed/A9QWym_uu3E",
+				name: "Индивидуальный план"
+			},
+			{
+				url: "https://www.youtube.com/embed/K9uAHiv5MMQ",
+				name: "Эффективный контракт"
+			},
+			{
+				url: "https://www.youtube.com/embed/AtIEKbrdHoQ",
+				name: "Наука"
+			}
+		]
+	-
+		const videos1c = [
+			{
+				url: "https://www.youtube.com/embed/Yq4Wmb62H5A",
+				name: "Автоматизация управленческого учета"
+			},
+			{
+				url: "https://www.youtube.com/embed/AtIEKbrdHoQ",
+				name: "1С:Документооборот"
+			},
+			{
+				url: "https://www.youtube.com/embed/HyuYUf_Ypns",
+				name: "1С:Зарплата и кадры"
+			},
+			{
+				url: "https://www.youtube.com/embed/8VwpdyCHwtM",
+				name: "ГМЗ"
+			}
+		]
+	-
+		const videosDot = [
+			{
+				url: "https://www.youtube.com/embed/hc8_UhOmWo8",
+				name: "Совещание по вопросам дистанционных образовательных технологий"
+			},
+			{
+				url: "https://www.youtube.com/embed/Ya1l2tsP2DQ",
+				name: "Инструкция по работе с сервисом веб конференций BigBlueButton"
+			}
+		]
+
+
+doctype html
+html(class=html.classList)&attributes(html.attrs)
+	head
+		if title !== null
+			title!= title
+		block styles
+			link(rel="stylesheet" href!=`https://use.fontawesome.com/releases/v5.2.0/css/all.css`)
+			link(rel="stylesheet" href!=`${baseDir}css/main.css?v=${Date.now()}`)
+		block head-end
+	body(class=body.classList)&attributes(body.attrs)
+		block body-start
+		block content
+		block scripts
+			script.
+				if (!('IntersectionObserver' in window)) {
+					var script = document.createElement("script");
+					script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+					document.getElementsByTagName('head')[0].appendChild(script);
+				}
+			script(src!=`${baseDir}js/vendor.js?v=${Date.now()}`)
+			script(src!=`${baseDir}js/main.js?v=${Date.now()}`)
+		block body-end

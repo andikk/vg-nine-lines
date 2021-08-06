@@ -1,0 +1,77 @@
+extends pug/base-my
+append vars
+mixin video(url, name)
+	.col-md-6.mt-5
+		h2.h3.text-center.mb-2=name
+		.embed-responsive.embed-responsive-16by9
+			iframe.embed-responsive-item(src=url )
+
+block content
+	header#topPge.bg-top
+		.container
+			.row.py-5
+				.col-md-8
+					h1.display-4 Обучающие видео-уроки
+					p.lead по использованию информационных систем Северо-Кавказского федерального университета
+
+				.col-md-4.text-md-right.d-none.d-md-block
+					img(src="images/logo-new.svg" alt="Логотип СКФУ")
+		.menu
+			.container
+				ul(class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist")
+					li.nav-item
+						a#pills-vuz-tab.nav-link.active(data-toggle='pill', href='#pills-vuz', role='tab', aria-controls='pills-vuz', aria-selected='true')
+							i.fas.fa-chalkboard-teacher
+							|  ИАСУ ВУЗ
+					li.nav-item
+						a#pills-ecampus-tab.nav-link(data-toggle='pill', href='#pills-ecampus', role='tab', aria-controls='pills-vuz', aria-selected='false')
+							i.fas.fa-user-graduate
+							|  еКампус
+					li.nav-item
+						a#pills-1c-tab.nav-link(data-toggle='pill', href='#pills-1c', role='tab', aria-controls='pills-1c', aria-selected='false')
+							i.fas.fa-calculator
+							|  1C
+					li.nav-item
+						a#pills-dot-tab.nav-link(data-toggle='pill', href='#pills-dot', role='tab', aria-controls='pills-dot', aria-selected='false')
+							i.fas.fa-chalkboard
+							|  ДОТ
+	main
+		section#lessons.py-3
+			.container
+				.tab-content#pills-tabContent1
+					.tab-pane.fade.show.active#pills-vuz(role="tabpanel" aria-labelledby="pills-vuz-tab")
+						.row.mb-4
+							each val, key in videosAsuVuz
+								+video(val.url, val.name)
+					.tab-pane.fade#pills-ecampus(role="tabpanel" aria-labelledby="pills-ecampus")
+						.row.mb-4
+							each val, key in videosEcampus
+								+video(val.url, val.name)
+					.tab-pane.fade#pills-1c(role="tabpanel" aria-labelledby="pills-1c")
+						.row.mb-4
+							each val, key in videos1c
+								+video(val.url, val.name)
+					.tab-pane.fade#pills-dot(role="tabpanel" aria-labelledby="pills-dot")
+						.row.mb-4
+							each val, key in videosDot
+								+video(val.url, val.name)
+	footer
+		.container.pt-3
+			.row
+				.col
+					p По вопросам использования информационных систем Северо-Кавказского федерального университета обращайтесь в <a href="http://spravka.ncfu.ru/">службу технической поддержки</a>
+			.row
+				.col-sm-1
+					img(src="images/logo-new-white.svg" class="d-none d-md-block" height="40" alt="Логотип СКФУ")
+				.col-sm-6
+					p <a href="https://ncfu.ru/for-employee/departments/departament-inform-tekhnologij/">Департамент информационных технологий</a>
+					p <a href="https://ncfu.ru/">Северо-Кавказский федеральный университет</a>
+				.col-sm-5
+					address
+						span.fas.fa-map-marker-alt
+						|  355029 г. Ставрополь, пр. Кулакова, 2, корпус 9<br>
+						span.fas.fa-envelope
+						|  E-mail: <a href="mailto:noc@ncfu.ru">noc@ncfu.ru</a><br>
+						span.fas.fa-phone
+						|  Телефон: (8652) 94-40-10
+

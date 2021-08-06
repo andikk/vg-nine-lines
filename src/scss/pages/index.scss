@@ -1,0 +1,37 @@
+body {
+	color: #525c77;
+}
+
+footer {
+	color: #c1c1c1;
+	background-color: #2d3460;
+}
+
+a {
+	text-decoration: none;
+	color: #2e3191;
+
+	&:hover {
+		text-decoration: none;
+		color: #6264C8;
+	}
+}
+
+.bg-top {
+	background-color: #e9ecef;
+}
+
+.menu {
+	box-shadow: 1px 1px 5px 0 rgba(50, 50, 50, 0.75);
+	background-color: #fff;
+}
+
+footer a {
+	text-decoration: underline;
+	color: #c1c1c1;
+
+	&:hover {
+		text-decoration: none;
+		color: #c1c1c1;
+	}
+}
